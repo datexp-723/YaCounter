@@ -1,9 +1,8 @@
 {
   "expo": {
-    "name": "YaCounter",
+    "name": "Ya Counter",
     "slug": "YaCounter",
     "version": "1.0.0",
-    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -32,7 +31,7 @@
     },
     "owner": "datexp-723",
     "plugins": [
-      "expo-router"
+      "expo-screen-orientation"
     ]
   }
 }

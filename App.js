@@ -1,11 +1,12 @@
 import { useState } from 'react';
-
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { IconButton, Colors } from 'react-native-paper';
+import { IconButton } from 'react-native-paper';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 export default function App() {
 
+  const [orientationIsLandscape,setOrientation]=useState(true)
   const [currentCount, setCurrentCount] = useState(0);
 
   const onIncrementCounter = () => {
@@ -46,8 +47,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   image: {
-    marginLeft: 20,
-    marginRight: 20,
+    marginLeft: 25,
+    marginRight: 25,
   },
   counter: {
     flex: 1,
