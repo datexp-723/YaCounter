@@ -32,6 +32,12 @@
     "owner": "datexp-723",
     "plugins": [
       "expo-screen-orientation"
-    ]
+    ],
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/f142572e-c10b-402c-b4a8-0118249872be"
+    }
   }
 }
