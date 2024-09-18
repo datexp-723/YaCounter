@@ -18,21 +18,22 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-    
-          <IconButton icon="minus-thick" 
-                      size={200}
-                      iconColor="white"
-                      style={styles.image}
-                      onPress={() => onDecrementCounter()}
-          />
-          <Text style={styles.title}>{currentCount}</Text>
-          <IconButton icon="plus-thick" 
-                      size={200}
-                      iconColor="white"
-                      style={styles.image}
-                      onPress={() => onIncrementCounter()}
-          />
-      <StatusBar style="auto" />
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>{currentCount}</Text>
+      </View>
+      <View style={styles.counter}>
+            <IconButton icon="minus-thick" 
+                        iconColor="white"
+                        size={100}
+                        style={styles.image}
+                        onPress={() => onDecrementCounter()} />
+            <IconButton icon="plus-thick"
+                        iconColor="white"         
+                        size={100}
+                        style={styles.image}
+                        onPress={() => onIncrementCounter()} />
+        <StatusBar style="auto" />
+      </View>
     </View>
   );
 }
@@ -42,16 +43,27 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#006EFF',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    paddingLeft: 100,
-    paddingRight: 100
+    flexDirection: 'column',
   },
   image: {
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  counter: {
+    flex: 1,
+    alignItems: 'flex-start',
+    flexDirection: 'row',
+  },
+  titleContainer: {
+    flex: 2,
+    color: '#fff',
+    fontSize: 150,
+    fontWeight: 'bold',
+    justifyContent: "center",
   },
   title: {
     color: '#fff',
-    fontSize: 300,
-    fontWeight: 'bold'
+    fontSize: 150,
+    fontWeight: 'bold',
   },
 });
