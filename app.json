@@ -22,6 +22,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f142572e-c10b-402c-b4a8-0118249872be"
+      }
+    },
+    "owner": "datexp-723"
   }
 }
