@@ -1,7 +1,7 @@
 {
   "name": "yacounter",
   "version": "1.0.0",
-  "main": "expo/AppEntry.js",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "android": "expo run:android",
@@ -25,7 +25,9 @@
     "react-native-web": "~0.19.10",
     "expo-screen-orientation": "~7.0.5",
     "expo-updates": "~0.25.24",
-    "expo-system-ui": "~3.0.7"
+    "expo-system-ui": "~3.0.7",
+    "typescript": "~5.3.3",
+    "@types/react": "~18.2.79"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
