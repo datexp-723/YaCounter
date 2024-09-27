@@ -1,4 +1,4 @@
-**Privacy Policy for 'Ya Counter'**
+## **Privacy Policy for 'Ya Counter'**
 
 This Privacy Policy explains how the 'Ya Counter' app collects, uses, and protects personal data, in accordance with GDPR and Google Play Store policies.
 
@@ -27,6 +27,6 @@ You have the right to access, correct, delete, or object to the processing of yo
 Contact us at: [iam.mahoa@gmail.com](mailto:iam.mahoa@gmail.com)
 
 # 6. Changes
-This Privacy Policy may be updated as needed. The latest version is available in the app.
+This Privacy Policy may be updated as needed.
 
 Last Updated: [2024/09/25]
