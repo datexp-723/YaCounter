@@ -1,84 +1,64 @@
-import { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { Appearance, useColorScheme, StyleSheet, Text, View } from 'react-native';
-import { IconButton } from 'react-native-paper';
-import * as ScreenOrientation from 'expo-screen-orientation';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Platform, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import { Link, Slot, Tabs, useNavigation, useRouter } from 'expo-router';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Drawer } from 'expo-router/drawer';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect } from 'react';
 
-export default function App() {
-  const colorScheme = useColorScheme();
+// Prevent the splash screen from auto-hiding before asset loading is complete.
+SplashScreen.preventAutoHideAsync();
 
-  const themeContainerStyle =
-    colorScheme === 'light' ? 
-      styles.lightContainer : 
-      styles.darkContainer;
+export default function RootLayout() {
 
-  const [orientationIsLandscape,setOrientation]=useState(true)
-  const [currentCount, setCurrentCount] = useState(0);
+    const router = useRouter();
+    const navigation = useNavigation();
 
-  const onIncrementCounter = () => {
-    setCurrentCount(currentCount+1);
-  };
+    const [loaded] = useFonts({
+        SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+      });
 
-  const onDecrementCounter = () => {
-    setCurrentCount(currentCount-1);
-  };
+      useEffect(() => {
+        if (loaded) {
+          SplashScreen.hideAsync();
+          router.push("/Counter");
+        }
+      }, [loaded]);
+    
+      if (!loaded) {
+        return null;
+      }
+
+    if (Platform.OS === 'web') {
+        return (
+          <View style={{ flex: 1 }}>
+            <header>
+              <Link href="/Counter">Counter</Link>
+              <Link href="/PrivacyPolicy">Imprint</Link>
+            </header>
+            <Slot/>
+          </View>
+        );
+      }
 
   return (
-    // <SafeAreaView style={{ flex: 1 }}>
-      <View style={[styles.container, themeContainerStyle]}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>{currentCount}</Text>
-        </View>
-        <View style={styles.counter}>
-              <IconButton icon="minus-thick" 
-                          iconColor="white"
-                          size={100}
-                          style={styles.image}
-                          onPress={() => onDecrementCounter()} />
-              <IconButton icon="plus-thick"
-                          iconColor="white"         
-                          size={100}
-                          style={styles.image}
-                          onPress={() => onIncrementCounter()} />
-          <StatusBar style="auto" />
-        </View>
-      </View>
-    // </SafeAreaView>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Drawer>
+        <Drawer.Screen
+          name="Counter" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: 'Counter',
+            title: 'Counter',
+          }}
+        />
+        <Drawer.Screen
+          name="PrivacyPolicy" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: 'Privacy Policy',
+            title: 'Privacy Policy',
+          }} 
+        />
+      </Drawer>
+    </GestureHandlerRootView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    flexDirection: 'column',
-  },
-  lightContainer: {
-    backgroundColor: '#006EFF',
-  },
-  darkContainer: {
-    backgroundColor: '#000000',
-  },
-  image: {
-    marginLeft: 25,
-    marginRight: 25,
-  },
-  counter: {
-    flex: 1,
-    alignItems: 'flex-start',
-    flexDirection: 'row',
-  },
-  titleContainer: {
-    flex: 2,
-    color: '#fff',
-    fontSize: 150,
-    fontWeight: 'bold',
-    justifyContent: "center",
-  },
-  title: {
-    color: '#fff',
-    fontSize: 150,
-    fontWeight: 'bold',
-  },
-});
